@@ -8,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { sendEmailVerification } from 'firebase/auth';
 import auth from '../firebase.init';
+import SocialMedia from '../SocialMedia/SocialMedia';
 
 
 
@@ -93,6 +94,7 @@ const Register = () => {
                 <p className='text-center'>Already have an account? then go to<Link className="p-3" style={{ textDecoration: 'none' }} to="/Login">Login</Link></p>
                 
             </form>
+            <SocialMedia></SocialMedia>
            
 
         </div>
