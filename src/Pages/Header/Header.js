@@ -22,10 +22,12 @@ const Header = () => {
                                 <Link class="nav-link active" aria-current="page" to="/Home">Home</Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
+                            <Link class="nav-link active" aria-current="page" to="/Register">Register</Link>
+                                
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
+                            <Link class="nav-link active" aria-current="page" to="/Login">Login</Link>
+                                
                             </li>
 
                         </ul>

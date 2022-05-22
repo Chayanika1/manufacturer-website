@@ -7,6 +7,8 @@ import Header from './Pages/Header/Header';
 import Purchase from './Pages/Purchases/Purchase';
 import Error from './Pages/Error/Error';
 import Tool from './Pages/ToolsName/Tool';
+import Register from './Pages/Register/Register';
+import Login from './Pages/Login/Login';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path='/Home' element={<Home></Home>}></Route>
         <Route path='/Tool' element={<Tool></Tool>}></Route>
         <Route path='/Tool/:id' element={<Purchase></Purchase>}></Route>
+        <Route path='/Register' element={<Register></Register>}></Route>
+        <Route path='/Login' element={<Login></Login>}></Route>
         <Route path='*' element={<Error></Error>}></Route>
       </Routes>
       <Footer></Footer>
