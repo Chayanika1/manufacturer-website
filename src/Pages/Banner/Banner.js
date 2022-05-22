@@ -5,30 +5,36 @@ import Banner3 from '../../Images/Banner3.jpg';
 
 const Banner = () => {
     return (
-        <div>
-            <div id="carouselExampleControls" class="carousel slide mt-4" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img style={{height:'450px', width:'400px'}} src={Banner1} class="d-block w-100" alt="..."/>
-                    </div>
-                    <div class="carousel-item">
-                        <img style={{height:'450px', width:'400px'}}src={Banner2} class="d-block w-100" alt="..."/>
-                    </div>
-                    <div class="carousel-item">
-                        <img style={{height:'450px', width:'400px'}}src={Banner3} class="d-block w-100" alt="..."/>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-
-        </div>
+        <div class="carousel w-full">
+  <div id="slide1" class="carousel-item relative w-full">
+    <img style={{height:'450px'}}src={Banner1} class="w-full"/> 
+    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide4" class="btn btn-circle">❮</a> 
+      <a href="#slide2" class="btn btn-circle">❯</a>
+    </div>
+  </div> 
+  <div id="slide2" class="carousel-item relative w-full">
+    <img style={{height:'450px'}}src={Banner2} class="w-full"/>  
+    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide1" class="btn btn-circle">❮</a> 
+      <a href="#slide3" class="btn btn-circle">❯</a>
+    </div>
+  </div> 
+  <div id="slide3" class="carousel-item relative w-full">
+    <img style={{height:'450px'}}src={Banner3} class="w-full"/> 
+    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide2" class="btn btn-circle">❮</a> 
+      <a href="#slide4" class="btn btn-circle">❯</a>
+    </div>
+  </div> 
+  <div id="slide4" class="carousel-item relative w-full">
+    <img style={{height:'450px'}}src={Banner2} class="w-full"/> 
+    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide3" class="btn btn-circle">❮</a> 
+      <a href="#slide1" class="btn btn-circle">❯</a>
+    </div>
+  </div>
+</div>
     );
 };
 

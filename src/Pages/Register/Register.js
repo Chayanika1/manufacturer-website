@@ -1,7 +1,7 @@
 import React, {  useState} from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { useForm } from "react-hook-form";
 
 
 
@@ -16,7 +16,9 @@ import SocialMedia from '../SocialMedia/SocialMedia';
 
 const Register = () => {
     const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
    
     const [confirmPassword, setConfirmPassword] = useState('');
     const [
@@ -32,6 +34,9 @@ const Register = () => {
     const handelEmail = (e) => {
         setEmail(e.target.value)
     }
+    const handelName = (e) => {
+        setName(e.target.value)
+    }
     const handelPassword = (e) => {
         setPassword(e.target.value)
     }
@@ -44,7 +49,7 @@ const Register = () => {
             alert('password not matched')
         }
 
-        createUserWithEmailAndPassword(email, password, confirmPassword);
+        createUserWithEmailAndPassword(email, password, confirmPassword,name);
         e.preventDefault();
 
 
@@ -70,6 +75,7 @@ const Register = () => {
             </div>
             <h3 className='p-3 text-center'>Please Register <span style={{ color: 'purple' }}>Your-Self</span></h3>
             <form onSubmit={handleRegistration}>
+            
                 <div class="mb-3 text-center">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
                     <input style={{ width: '50%' }} onBlur={handelEmail} type="email" class="form-control mx-auto" id="exampleInputEmail1" aria-describedby="emailHelp" required />

@@ -1,41 +1,47 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import Icon from '../../Images/Icon.jpg';
+import auth from '../firebase.init';
 
 const Header = () => {
+    const [user] = useAuthState(auth);
+    const handleSignOut = () => {
+        signOut(auth);
+    }
     return (
-        <div>
-            <nav class="navbar navbar-dark bg-primary navbar-expand-lg  ">
-                <div class="container-fluid">
-
-                    <img style={{ height: '50px', width: '50px', borderRadius: '100%' }} src={Icon} alt="" />
-
-
-
-
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <Link class="nav-link active" aria-current="page" to="/Home">Home</Link>
-                            </li>
-                            <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to="/Register">Register</Link>
-                                
-                            </li>
-                            <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to="/Login">Login</Link>
-                                
-                            </li>
-
-                        </ul>
-                    </div>
+        <div class="navbar bg-base-100">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <label tabindex="0" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </label>
+                    <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><Link to='/Home'>Home</Link></li>
+                        
+                        <li><Link to='/Register'>Register</Link></li>
+                        <li><Link to='/Login'>Login</Link></li>
+                    </ul>
                 </div>
-            </nav>
-
+                <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal p-0">
+                    <li><Link to='/Home'>Home</Link></li>
+                    <li><Link to='/Register'>Register</Link></li>
+                    {
+                        user ? <button class="btn btn-active btn-primary"onClick={handleSignOut}>SignOut</button>:<li><Link to='/Login'>Login</Link></li>
+                    }
+                        
+                    
+                </ul>
+            </div>
+            
         </div>
+
+
+
     );
 };
 
