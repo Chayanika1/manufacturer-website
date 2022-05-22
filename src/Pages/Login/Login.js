@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -36,6 +36,7 @@ const Login = () => {
                 
                 
             </form>
+            <p className='text-center'>Don't have an account? then go to<Link className="p-3" style={{ textDecoration: 'none' }} to="/Register">Register</Link></p>
            
         </div>
     );

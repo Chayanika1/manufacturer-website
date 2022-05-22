@@ -1,6 +1,6 @@
 [
     {
-        "id":1,
+        
         "name":"Dell Vostro Small",
         "price":45000,
         "description":"Processor 10th Gen Intel® Core™ i3-10105 (6 MB cache, 4 cores, 8 threads, 3.70 GHz to 4.40 GHz Turbo)",
@@ -10,7 +10,7 @@
         "rate":5.0
     },
     {
-        "id":2,
+        
         "name":"Rolltop® Computer CPU, Intel Core 2 Duo 2.9 Ghz Processor, G 31",
         "price":8999,
         "description":"Sales Package: 1 ROLLTOP Assembled Desktop Computer( INTEL CORE 2 DUO 2.9 GHZ Processor, G 31 Motherboard, 4 GB RAM,",
@@ -20,7 +20,7 @@
         "rate":5.0
     },
     {
-        "id":3,
+        
         "name":"Logitech G512 Wired USB Gaming Keyboard  (Blue)",
         "price":8995,
         "description":"You can enjoy high-performance gaming with the Logitech G512 wired USB gaming keyboard that boasts three different mechanical switch choices. You can upgrade the critical gaming keys for an unmatched gaming",
@@ -30,7 +30,7 @@
         "rate":4.0
     },
     {
-        "id":4,
+        
         "name":"Cosmic Byte CB-GK-15 Trton Wired USB Gaming Keyboard  (Black)",
         "price":1168,
         "description":"Processor 10th Gen Intel® Core™ i3-10105 (6 MB cache, 4 cores, 8 threads, 3.70 GHz to 4.40 GHz Turbo)",
@@ -40,7 +40,7 @@
         "rate":3.0
     },
     {
-        "id":5,
+        
         "name":"Logitech M221 1000 DPI Wireless Silent Mouse (910-004884, Red)",
         "price":749,
         "description":"Enjoy the power of silence with this Logitech M221 SILENT Mouse (Red). Its wireless connection helps you complete work relaxing on your couch. The mice requires no software and works effortlessly with most of the computers.",
@@ -50,7 +50,7 @@
         "rate":5.0
     },
     {
-        "id":6,
+       
         "name":"Dell Vostro Small",
         "price":45000,
         "description":"Processor 10th Gen Intel® Core™ i3-10105 (6 MB cache, 4 cores, 8 threads, 3.70 GHz to 4.40 GHz Turbo)",
