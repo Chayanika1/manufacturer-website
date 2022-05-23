@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import AllReview from '../AllReview/AllReview';
 
-const Reviews = () => {
+const My = () => {
     const[reviews,setReviews] = useState([]);
     useEffect(()=>{
-        fetch('review.json')
+        fetch('all.json')
         .then(response=>response.json())
         .then(data=>setReviews(data))
     },[])
     return (
         <div className='container'>
-            <div className='row'>
+            <h2 style={{textAlign:'center',marginTop:'30px'}} className="text-2xl">CUSTOMER REVIEWS</h2>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5' style={{textAlign:'center'}}>
             {
                 reviews.map( review=><AllReview review={review}></AllReview>)
             }
@@ -22,4 +23,4 @@ const Reviews = () => {
     );
 };
 
-export default Reviews;
+export default My;

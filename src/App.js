@@ -15,6 +15,7 @@ import MyOrders from './Pages/DashBoard/MyOrders';
 import MyReview from './Pages/DashBoard/MyReview';
 import Payment from './Pages/Payment/Payment';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
+import MyProfile from './Pages/DashBoard/MyProfile';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
 
           <Route index element={<MyOrders />} />
           <Route path='MyReview'element={<MyReview />}></Route>
+          <Route path='MyProfile'element={<MyProfile />}></Route>
 
         </Route>
         <Route path="/Payment" element={<Payment></Payment>}></Route>
