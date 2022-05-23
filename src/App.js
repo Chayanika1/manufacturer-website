@@ -9,6 +9,8 @@ import Error from './Pages/Error/Error';
 import Tool from './Pages/ToolsName/Tool';
 import Register from './Pages/Register/Register';
 import Login from './Pages/Login/Login';
+import DashBoard from './Pages/DashBoard/DashBoard';
+import MyOrders from './Pages/DashBoard/MyOrders';
 
 function App() {
   return (
@@ -21,6 +23,10 @@ function App() {
         <Route path='/Tool/:id' element={<Purchase></Purchase>}></Route>
         <Route path='/Register' element={<Register></Register>}></Route>
         <Route path='/Login' element={<Login></Login>}></Route>
+        <Route path="/DashBoard" element={<DashBoard />}>
+        <Route index element={<MyOrders />} />
+        
+      </Route>
         <Route path='*' element={<Error></Error>}></Route>
       </Routes>
       <Footer></Footer>

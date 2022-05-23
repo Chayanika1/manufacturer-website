@@ -4,6 +4,9 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import auth from '../firebase.init';
 import ProductQuantity from '../ProductQuantity/ProductQuantity';
+import { ToastContainer, toast } from 'react-toastify';
+
+  import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -56,7 +59,13 @@ const Purchase = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                console.log(data);
+                if(data.success){
+                    toast('Booking done')
+                }
+                else{
+                    toast.error('already booked')
+                }
             })
 
 
@@ -76,9 +85,13 @@ const Purchase = () => {
                 <div class="card-body items-center text-center">
                     <h2 class="card-title">{items.name}</h2>
                     <p>{items.details}</p>
+                    <h5>Price : ${items.price}</h5>
+                    <p> rate : {items.rate}</p>
+                    <p> Available{items.quantity}</p>
+                    <p>Max :{items.available}</p>
                     <div class="card-actions">
-                        <button onClick={()=>setBuy(items)} class="btn btn-primary">Buy Now</button>
-                        <label for="my-modal-6" class="btn modal-button">Buy Now</label>
+                        
+                        <label onClick={()=>setBuy(items)} for="my-modal-6" class="btn modal-button">Buy Now</label>
                        
                     </div>
                 </div>
@@ -94,11 +107,10 @@ const Purchase = () => {
                     <input type="text" name="address" placeholder="Your Address" class="input input-bordered input-success w-full max-w-xs" />
                     <input type="text"name="phone" placeholder="Your Phone number" class="input input-bordered input-success w-full max-w-xs" />
                     <input type="text" name="product" value={items.name} class="input input-bordered input-success w-full max-w-xs" />
-                    <input type="submit" value="submit" class="btn btn-secondary w-full max-w-xs" />
+                    <input type="submit" value="Submit" className="btn btn-secondary w-full max-w-xs" />
                     </form>
-                    <div class="modal-action">
-                        <label for="my-modal-6" class="btn">Yay!</label>
-                    </div>
+                    <ToastContainer />
+                    
                 </div>
             </div>
 
