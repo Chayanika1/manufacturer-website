@@ -12,6 +12,9 @@ import Login from './Pages/Login/Login';
 import DashBoard from './Pages/DashBoard/DashBoard';
 import MyOrders from './Pages/DashBoard/MyOrders';
 
+import MyReview from './Pages/DashBoard/MyReview';
+import Payment from './Pages/Payment/Payment';
+
 function App() {
   return (
     <div className="container">
@@ -19,19 +22,22 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/Home' element={<Home></Home>}></Route>
-       
+
         <Route path='/Tool/:id' element={<Purchase></Purchase>}></Route>
         <Route path='/Register' element={<Register></Register>}></Route>
         <Route path='/Login' element={<Login></Login>}></Route>
         <Route path="/DashBoard" element={<DashBoard />}>
-        <Route index element={<MyOrders />} />
-        
-      </Route>
+
+          <Route index element={<MyOrders />} />
+          <Route path='MyReview'element={<MyReview />}></Route>
+
+        </Route>
+        <Route path="/Payment" element={<Payment></Payment>}></Route>
         <Route path='*' element={<Error></Error>}></Route>
       </Routes>
       <Footer></Footer>
-      
-     
+
+
     </div>
   );
 }
