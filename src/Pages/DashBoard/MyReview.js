@@ -35,6 +35,7 @@ const MyReview = () => {
                         <input type="text" placeholder="Your Comment" {...register("comment")}class="input w-full max-w-xs" />
                         <input type="text" placeholder="Your Rating"{...register("rating")} class="input w-full max-w-xs" />
                         <input type="text" placeholder="Your img url" {...register("img")}class="input w-full max-w-xs" />
+                        <input type="file" placeholder="Your img url" {...register("img")}class="input w-full max-w-xs" />
 
                         <button class="btn">Add Comment</button>
                     </div>

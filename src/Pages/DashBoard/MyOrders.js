@@ -29,6 +29,7 @@ const MyOrders = () => {
                         <tr>
                             <th> Id</th>
                             <th>Email</th>
+                            <th> User Name</th>
                             <th>Product Name</th>
                             
                         </tr>
@@ -38,6 +39,7 @@ const MyOrders = () => {
                             orders.map(order=><tr>
                                 <td>{order._id}</td>
                                 <td>{user ?.email}</td>
+                                <td>{user ?.displayName}</td>
                                 <td>{order.booking}</td>
                                 <td><button onClick={handelPayment} class="btn btn-xs btn-secondary">Pay</button></td>
                                 <td><button class="btn btn-xs btn-error">Cancel</button></td>

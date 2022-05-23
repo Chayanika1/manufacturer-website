@@ -43,6 +43,7 @@ const Purchase = () => {
 
         const booking = {
             bookingId: items._id,
+            name: user.displayName,
             booking: items.name,
             buyer: user.email,
             phone: e.target.phone.value

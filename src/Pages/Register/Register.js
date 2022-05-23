@@ -26,18 +26,13 @@ const Register = () => {
         console.log(user );
     }
     const handleRegister = async (data) => {
-        await updateProfile({ displayName: data.name });
+        await updateProfile({ displayName: data?.name });
 
         await createUserWithEmailAndPassword(data.email, data.password);
         console.log(data.name)
         navigate('/Home')
 
     }
-
-
-
-
-
 
 return (
     <div className='flex justify-center h-screen items-center'>
