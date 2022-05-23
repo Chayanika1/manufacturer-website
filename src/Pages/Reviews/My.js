@@ -4,7 +4,7 @@ import AllReview from '../AllReview/AllReview';
 const My = () => {
     const[reviews,setReviews] = useState([]);
     useEffect(()=>{
-        fetch('all.json')
+        fetch('http://localhost:5000/review')
         .then(response=>response.json())
         .then(data=>setReviews(data))
     },[])
