@@ -6,7 +6,21 @@ import { useNavigate } from 'react-router-dom';
 const MyReview = () => {
     const navigate = useNavigate()
     const { register,  handleSubmit } = useForm();
+    const imageStorageKey = 'c41b5fa5bb7a5e365ff9532690613577'
     const handleRegister=(data)=>{
+        const image = data.img[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res=>res.json())
+        .then(result=>[
+            console.log('imgbb',result)
+        ])
+        console.log(data)
         fetch('http://localhost:5000/review',{
             method:'POST',
             headers:{
@@ -15,9 +29,9 @@ const MyReview = () => {
             },
             body:JSON.stringify(data)
         })
-        .then(response=>Response.json())
+        .then(response=>response.json())
         .then((data)=>{
-            console.log("success",data);
+            //console.log("success",data);
         })
          alert("successfully added","TNANK YOU");
          navigate('/Home')
