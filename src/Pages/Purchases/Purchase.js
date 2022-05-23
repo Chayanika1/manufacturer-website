@@ -10,6 +10,8 @@ import ProductQuantity from '../ProductQuantity/ProductQuantity';
 const Purchase = () => {
     const { id } = useParams();
     const [items, setItems] = useState({});
+    const[buy,setBuy] = useState(null);
+
 
 
 
@@ -29,6 +31,9 @@ const Purchase = () => {
 
 
     const handelSubmit = (e) => {
+        e.preventDefault()
+      const num = e.target.phone.value;
+      console.log(num)
 
 
 
@@ -72,10 +77,32 @@ const Purchase = () => {
                     <h2 class="card-title">{items.name}</h2>
                     <p>{items.details}</p>
                     <div class="card-actions">
-                        <button class="btn btn-primary">Buy Now</button>
+                        <button onClick={()=>setBuy(items)} class="btn btn-primary">Buy Now</button>
+                        <label for="my-modal-6" class="btn modal-button">Buy Now</label>
+                       
                     </div>
                 </div>
             </div>
+            <div>
+            <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+            <div class="modal modal-bottom sm:modal-middle">
+                <div class="modal-box">
+                <label for="my-modal-6" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <form onSubmit={handelSubmit} className='grid grid-cols-1 gap-3 justify-items-center mt-3'>
+                   
+                    <input type="email" name="email" disabled value={user ?.email}  class="input input-bordered input-success w-full max-w-xs" />
+                    <input type="text" name="address" placeholder="Your Address" class="input input-bordered input-success w-full max-w-xs" />
+                    <input type="text"name="phone" placeholder="Your Phone number" class="input input-bordered input-success w-full max-w-xs" />
+                    <input type="text" name="product" value={items.name} class="input input-bordered input-success w-full max-w-xs" />
+                    <input type="submit" value="submit" class="btn btn-secondary w-full max-w-xs" />
+                    </form>
+                    <div class="modal-action">
+                        <label for="my-modal-6" class="btn">Yay!</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
         </div>
     );
