@@ -14,6 +14,7 @@ import MyOrders from './Pages/DashBoard/MyOrders';
 
 import MyReview from './Pages/DashBoard/MyReview';
 import Payment from './Pages/Payment/Payment';
+import RequireAuth from './Pages/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -23,10 +24,10 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/Home' element={<Home></Home>}></Route>
 
-        <Route path='/Tool/:id' element={<Purchase></Purchase>}></Route>
+        <Route path='/Tool/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
         <Route path='/Register' element={<Register></Register>}></Route>
         <Route path='/Login' element={<Login></Login>}></Route>
-        <Route path="/DashBoard" element={<DashBoard />}>
+        <Route path="/DashBoard" element={<RequireAuth><DashBoard /></RequireAuth>}>
 
           <Route index element={<MyOrders />} />
           <Route path='MyReview'element={<MyReview />}></Route>
