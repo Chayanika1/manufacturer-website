@@ -1,110 +1,134 @@
-import React, {  useState} from 'react';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-
-
-
-
-import { sendEmailVerification } from 'firebase/auth';
 import auth from '../firebase.init';
-import SocialMedia from '../SocialMedia/SocialMedia';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import SocialMedia from '../SocialMedia/SocialMedia'
 
-
-
-
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
+    const { register, formState: { errors }, handleSubmit } = useForm();
+    const navigate = useNavigate();
+
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-   
-    const [confirmPassword, setConfirmPassword] = useState('');
+    let signInError;
     const [
         createUserWithEmailAndPassword,
         user,
-       
+        loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-    
-    const navigate = useNavigate();
-
-
-    const handelEmail = (e) => {
-        setEmail(e.target.value)
+    if (error || updateError) {
+        signInError = <p className='text-red-500'><small>{error?.message  || updateError?.message}</small></p>
     }
-    const handelName = (e) => {
-        setName(e.target.value)
-    }
-    const handelPassword = (e) => {
-        setPassword(e.target.value)
-    }
-    const handelConfirmPassword = (e) => {
-        setConfirmPassword(e.target.value)
-    }
-    const handleRegistration = (e) => {
 
-        if (password !== confirmPassword) {
-            alert('password not matched')
-        }
-
-        createUserWithEmailAndPassword(email, password, confirmPassword,name);
-        e.preventDefault();
-
-
+    if (user ) {
+        console.log(user );
     }
-    let errorElement;
-    if (error) {
-        errorElement = <p>{error.message}</p>
-    }
-    if (user) {
+    const handleRegister = async (data) => {
+
+        await createUserWithEmailAndPassword(data.email, data.password);
         navigate('/Home')
-    }
-    const verify = () => {
-        sendEmailVerification(auth.currentUser)
-
-        
 
     }
-    return (
-        <div className='col-lg-6 col-sm-8 mx-auto border border-3 p-4 shadow-lg p-3 mb-5 bg-body rounded mt-3'>
-            <div className='text-center'>
-                
 
+
+
+
+
+
+return (
+    <div className='flex justify-center h-screen items-center'>
+        <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="text-center text-2xl fond-bold">Register</h2>
+                <form onSubmit={handleSubmit(handleRegister)}>
+                    <div class="form-control w-full max-w-xs">
+                    <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Your Name"
+                                className="input input-bordered w-full max-w-xs"
+                                {...register("name", {
+                                    required: {
+                                        value: true,
+                                        message: 'Name is Required'
+                                    }
+                                })}
+                            />
+                            <label className="label">
+                                {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                            </label>
+                        <label class="label">
+                            <span class="label-text">What is your email?</span>
+
+                        </label>
+                        <input type="email" placeholder="your email" class="input input-bordered w-full max-w-xs"
+                            {...register("email", {
+                                required: {
+                                    value: true,
+                                    message: 'email is required'
+                                },
+                                pattern: {
+                                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                                        message: 'Provide a valid Email'
+                                }
+                            })} />
+                            <label className="label">
+                                {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                                {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                            </label>
+
+
+                        <label class="label">
+                            <span class="label-text">password</span>
+
+                        </label>
+                        <input type="password" placeholder="your password" class="input input-bordered w-full max-w-xs"
+                            {...register("password", {
+                                required: {
+                                    value: true,
+                                    message: 'confirm password is required'
+                                },
+                                minLength: {
+                                    value: 6,
+                                    message: 'password must be 6 characters' 
+                                }
+                            })} />
+                             <label className="label">
+                                {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+                                {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+                            </label>
+                        <label class="label">
+                            <span class="label-text">Confirm password</span>
+
+                        </label>
+                        <input type="password" placeholder="your Confirm password" class="input input-bordered w-full max-w-xs"
+                            {...register("Confirm password", {
+                                required: {
+                                    value: true,
+                                    message: 'password is required'
+                                },
+                                minLength: {
+                                    value: 6,
+                                    message: 'password must be 6 characters' 
+                                }
+                            })} />
+                    </div>
+                    {signInError}
+
+                    <input  className='btn w-full max-w-xs text-white' type="submit" value='Register' />
+                </form>
+                <div class="divider">OR</div>
+                <SocialMedia></SocialMedia>
             </div>
-            <h3 className='p-3 text-center'>Please Register <span style={{ color: 'purple' }}>Your-Self</span></h3>
-            <form onSubmit={handleRegistration}>
-            
-                <div class="mb-3 text-center">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input style={{ width: '50%' }} onBlur={handelEmail} type="email" class="form-control mx-auto" id="exampleInputEmail1" aria-describedby="emailHelp" required />
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div class="mb-3 text-center">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input style={{ width: '50%' }} onBlur={handelPassword} type="password" class="form-control mx-auto" id="exampleInputPassword1" required />
-                </div>
-                <div class="mb-3 text-center">
-                    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                    <input style={{ width: '50%' }} onBlur={handelConfirmPassword} type="password" class="form-control mx-auto" id="exampleInputPassword1" required />
-                </div>
-
-                {errorElement}
-                <div className='text-center'>
-                    <button onClick={verify} type="submit" class="btn btn-primary">Register</button>
-
-                </div>
-
-
-                <p className='text-center'>Already have an account? then go to<Link className="p-3" style={{ textDecoration: 'none' }} to="/Login">Login</Link></p>
-                
-            </form>
-            <SocialMedia></SocialMedia>
-           
-
         </div>
-    );
-};
+
+    </div>
+);
+                        }
+                    
 
 export default Register;

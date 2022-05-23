@@ -12,10 +12,8 @@ const SocialMedia = () => {
     }
     return (
         <div>
-            <div class="d-grid gap-2">
-                <button onClick={()=>signInWithGoogle()} class="btn btn-light border border-5 mb-4" type="button"><img className="rounded-circle"style={{height:'30px',width:'30px'}} src={Google}></img><span className='p-3'>Signin with Google</span></button>
-
-            </div>
+            <button onClick={()=>signInWithGoogle()}class="btn btn-success"><img style={{height:'30px',width:'30px',borderRadius:'50%', padding:'2px'}} src={Google}/> Signin with Google</button>
+           
             
         </div>
     );
