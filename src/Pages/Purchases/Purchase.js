@@ -46,7 +46,8 @@ const Purchase = () => {
             name: user.displayName,
             booking: items.name,
             buyer: user.email,
-            phone: e.target.phone.value
+            phone: e.target.phone.value,
+            price : items.price
 
 
 
@@ -109,6 +110,7 @@ const Purchase = () => {
                     <input type="text" name="address" placeholder="Your Address" class="input input-bordered input-success w-full max-w-xs" />
                     <input type="text"name="phone" placeholder="Your Phone number" class="input input-bordered input-success w-full max-w-xs" />
                     <input type="text" name="product" value={items.name} class="input input-bordered input-success w-full max-w-xs" />
+                    <input type="text" name="price" value= {items.price} class="input input-bordered input-success w-full max-w-xs" />
                     <input type="submit" value="Submit" className="btn btn-secondary w-full max-w-xs" />
                     </form>
                     <ToastContainer />

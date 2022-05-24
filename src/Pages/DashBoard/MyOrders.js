@@ -16,9 +16,7 @@ const MyOrders = () => {
         }
 
     }, [user])
-    const handelPayment =()=>{
-        navigate('/Payment')
-    }
+    
     return (
         <div>
             <h4>my orders:{orders.length}</h4>
@@ -27,21 +25,31 @@ const MyOrders = () => {
 
                     <thead>
                         <tr>
-                            <th> Id</th>
+                            
+                            
                             <th>Email</th>
                             <th> User Name</th>
                             <th>Product Name</th>
+                            <th>Price</th>
                             
                         </tr>
                     </thead>
                     <tbody>
                         {
                             orders.map(order=><tr>
-                                <td>{order._id}</td>
+                                
                                 <td>{user ?.email}</td>
                                 <td>{user ?.displayName}</td>
                                 <td>{order.booking}</td>
-                                <td><button onClick={handelPayment} class="btn btn-xs btn-secondary">Pay</button></td>
+                                <td>
+                                {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}
+                                    {(order.price && order.paid) && <div>
+                                        <p><span className='text-success'>Paid</span></p>
+                                        
+                                    </div>}
+                                </td>
+                                    
+                                
                                 <td><button class="btn btn-xs btn-error">Cancel</button></td>
                             </tr>)
                         }
