@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import auth from '../firebase.init';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-import SocialMedia from '../SocialMedia/SocialMedia'
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import Google from '../../Images/Google.png'
 
 import { useNavigate } from 'react-router-dom';
 import useToken from '../../hooks/useToken';
+import Spinner from '../Spinner/Spinner';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const navigate = useNavigate();
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
@@ -21,8 +24,8 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-    const[token] = useToken(user);
-    if (error || updateError) {
+    const[token] = useToken(user ||gUser);
+    if (error || updateError || gError) {
         signInError = <p className='text-red-500'><small>{error?.message  || updateError?.message}</small></p>
     }
     if(token){
@@ -30,8 +33,11 @@ const Register = () => {
 
     }
 
-    if (user ) {
+    if (user || gUser ) {
         console.log(user );
+    }
+    if (loading || gLoading || updating) {
+        return <Spinner></Spinner>
     }
     
     const handleRegister = async (data) => {
@@ -128,7 +134,8 @@ return (
                     <input  className='btn w-full max-w-xs text-white' type="submit" value='Register' />
                 </form>
                 <div class="divider">OR</div>
-                <SocialMedia></SocialMedia>
+                <button onClick={()=>signInWithGoogle()}class="btn btn-success"><img style={{height:'30px',width:'30px',borderRadius:'50%', padding:'2px'}} src={Google}/> Signin with Google</button>
+                
             </div>
         </div>
 

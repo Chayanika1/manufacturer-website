@@ -6,17 +6,22 @@ import auth from '../firebase.init';
 import ProductQuantity from '../ProductQuantity/ProductQuantity';
 import { ToastContainer, toast } from 'react-toastify';
 
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
 const Purchase = () => {
     const { id } = useParams();
     const [items, setItems] = useState({});
-    const[buy,setBuy] = useState(null);
+    const [buy, setBuy] = useState(null);
 
 
-
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm();
 
 
 
@@ -33,10 +38,9 @@ const Purchase = () => {
 
 
 
-    const handelSubmit = (e) => {
-        e.preventDefault()
-      const num = e.target.phone.value;
-      console.log(num)
+    const onSubmit = () => {
+        
+       
 
 
 
@@ -46,8 +50,8 @@ const Purchase = () => {
             name: user.displayName,
             booking: items.name,
             buyer: user.email,
-            phone: e.target.phone.value,
-            price : items.price
+            
+            price: items.price
 
 
 
@@ -62,10 +66,10 @@ const Purchase = () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                if(data.success){
+                if (data.success) {
                     toast('Booking done')
                 }
-                else{
+                else {
                     toast.error('already booked')
                 }
             })
@@ -92,33 +96,41 @@ const Purchase = () => {
                     <p> Available{items.quantity}</p>
                     <p>Max :{items.available}</p>
                     <div class="card-actions">
-                        
-                        <label onClick={()=>setBuy(items)} for="my-modal-6" class="btn modal-button">Buy Now</label>
-                       
+
+                        <label onClick={() => setBuy(items)} for="my-modal-6" class="btn modal-button">Buy Now</label>
+
                     </div>
                 </div>
             </div>
             <div>
-            <input type="checkbox" id="my-modal-6" class="modal-toggle" />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
-                <label for="my-modal-6" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <form onSubmit={handelSubmit} className='grid grid-cols-1 gap-3 justify-items-center mt-3'>
-                    <input type="name" name="name" disabled value={user?.displayName || ''}  class="input input-bordered input-success w-full max-w-xs" />
-                   
-                    <input type="email" name="email" disabled value={user ?.email}  class="input input-bordered input-success w-full max-w-xs" />
-                    <input type="text" name="address" placeholder="Your Address" class="input input-bordered input-success w-full max-w-xs" />
-                    <input type="text"name="phone" placeholder="Your Phone number" class="input input-bordered input-success w-full max-w-xs" />
-                    <input type="text" name="product" value={items.name} class="input input-bordered input-success w-full max-w-xs" />
-                    <input type="text" name="price" value= {items.price} class="input input-bordered input-success w-full max-w-xs" />
-                    <input type="submit" value="Submit" className="btn btn-secondary w-full max-w-xs" />
-                    </form>
-                    <ToastContainer />
-                    
-                </div>
-            </div>
+                <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+                <div class="modal modal-bottom sm:modal-middle">
+                    <div class="modal-box">
+                        <label for="my-modal-6" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-1 gap-3 justify-items-center mt-3'>
+                            <input type="name"{...register("name")} name="name" disabled value={user?.displayName || ''} class="input input-bordered input-success w-full max-w-xs" />
 
-        </div>
+                            <input type="email"{...register("email")} name="email" disabled value={user?.email} class="input input-bordered input-success w-full max-w-xs" />
+                            <input type="text"{...register("address")} name="address" placeholder="Your Address" class="input input-bordered input-success w-full max-w-xs" />
+                            <input type="text" {...register("phone")}name="phone" placeholder="Your Phone number" class="input input-bordered input-success w-full max-w-xs" />
+                            <input type="text"{...register("product")} name="product" value={items.name} class="input input-bordered input-success w-full max-w-xs" />
+                            <input type="text" {...register("price")}name="price" value={items.price} class="input input-bordered input-success w-full max-w-xs" />
+                            <input type="number" name="quantity" placeholder="enter quantity" {...register("quntity", { min: 5, max: items.quantity })} class="input input-bordered input-success w-full max-w-xs" />
+                            
+                            {errors.quntity && (
+                                <p className="text-red-800 font-bold">
+                                    minimum order 2 and max order {items.quantity}
+                                </p>
+                            )}
+
+                            <input type="submit" value="Submit" className="btn btn-secondary w-full max-w-xs" />
+                        </form>
+                        <ToastContainer />
+
+                    </div>
+                </div>
+
+            </div>
 
         </div>
     );

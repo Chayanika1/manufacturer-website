@@ -4,7 +4,12 @@ import Spinner from '../Spinner/Spinner';
 import UserCard from './UserCard';
 
 const AllUsers = () => {
-    const { data: users, isLoading } = useQuery('users', () => fetch('http://localhost:5000/user').then(res => res.json()))
+    const { data: users, isLoading } = useQuery('users', () => fetch('http://localhost:5000/user', {
+        method: 'GET',
+        headers:{
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()));
     if (isLoading) {
         <Spinner></Spinner>
     }
@@ -17,16 +22,20 @@ const AllUsers = () => {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Name</th>
+                            <th>Email</th>
                             <th>Job</th>
                             <th>Favorite Color</th>
                         </tr>
                     </thead>
-                     <tbody>
-                         {
-                             users.map(user=><UserCard user={user}></UserCard>)
-                         }
-                     </tbody>
+                    <tbody>
+                       {
+                           users?.map(user=><UserCard
+                           key={user._id}
+                           user={user}
+                           
+                           ></UserCard>)
+                       }
+                    </tbody>
                 </table>
             </div>
 
