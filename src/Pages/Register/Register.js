@@ -5,12 +5,15 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import SocialMedia from '../SocialMedia/SocialMedia'
 
 import { useNavigate } from 'react-router-dom';
+import useToken from '../../hooks/useToken';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate();
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    
+    
     let signInError;
     const [
         createUserWithEmailAndPassword,
@@ -18,19 +21,25 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const[token] = useToken(user);
     if (error || updateError) {
         signInError = <p className='text-red-500'><small>{error?.message  || updateError?.message}</small></p>
+    }
+    if(token){
+        navigate('/Home')
+
     }
 
     if (user ) {
         console.log(user );
     }
+    
     const handleRegister = async (data) => {
         await updateProfile({ displayName: data?.name });
 
         await createUserWithEmailAndPassword(data.email, data.password);
         console.log(data.name)
-        navigate('/Home')
+       
 
     }
 

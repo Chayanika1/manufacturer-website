@@ -16,6 +16,7 @@ import MyReview from './Pages/DashBoard/MyReview';
 import Payment from './Pages/Payment/Payment';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import MyProfile from './Pages/DashBoard/MyProfile';
+import AllUsers from './Pages/DashBoard/AllUsers';
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
           <Route path='MyReview'element={<MyReview />}></Route>
           <Route path='MyProfile'element={<MyProfile />}></Route>
           <Route path="Payment/:id" element={<Payment></Payment>}></Route>
+          <Route path="AllUsers" element={<AllUsers></AllUsers>}></Route>
+          
 
         </Route>
         

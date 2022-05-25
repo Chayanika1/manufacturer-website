@@ -9,6 +9,7 @@ const Header = () => {
     const [user] = useAuthState(auth);
     const handleSignOut = () => {
         signOut(auth);
+        localStorage.removeItem('accessToken')
     }
     return (
         <div class="navbar bg-base-100">
@@ -23,7 +24,9 @@ const Header = () => {
                         <li><Link to='/DashBoard'>DashBoard</Link></li>
 
                         <li><Link to='/Register'>Register</Link></li>
-                        <li><Link to='/Login'>Login</Link></li>
+                        {
+                        user ? <button class="btn btn-active btn-primary" onClick={handleSignOut}>SignOut</button> : <li><Link to='/Login'>Login</Link></li>
+                    }
                     </ul>
                 </div>
                 <img style={{height:'80px',width:'80px'}} src={Icon} alt=""/>
