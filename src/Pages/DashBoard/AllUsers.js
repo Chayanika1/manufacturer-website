@@ -4,7 +4,7 @@ import Spinner from '../Spinner/Spinner';
 import UserCard from './UserCard';
 
 const AllUsers = () => {
-    const { data: users, isLoading } = useQuery('users', () => fetch('http://localhost:5000/user', {
+    const { data: users, isLoading,refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
         method: 'GET',
         headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -31,7 +31,7 @@ const AllUsers = () => {
                        {
                            users?.map(user=><UserCard
                            key={user._id}
-                           user={user}
+                           user={user} refetch={refetch}
                            
                            ></UserCard>)
                        }
