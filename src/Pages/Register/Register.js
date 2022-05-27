@@ -5,7 +5,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Google from '../../Images/Google.png'
 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useToken from '../../hooks/useToken';
 import Spinner from '../Spinner/Spinner';
 
@@ -135,9 +135,10 @@ return (
                 </form>
                 <div class="divider">OR</div>
                 <button onClick={()=>signInWithGoogle()}class="btn btn-success"><img style={{height:'30px',width:'30px',borderRadius:'50%', padding:'2px'}} src={Google}/> Signin with Google</button>
-                
+                <p className='text-center'>Already have an account? then go to<Link className="p-3" style={{ textDecoration: 'none' }} to="/Login">Login</Link></p>
             </div>
         </div>
+        
 
     </div>
 );

@@ -24,11 +24,14 @@ import ManageProducts from './Pages/DashBoard/ManageProducts';
 import Adminorder from './Pages/DashBoard/Adminorder';
 import Manageorder from './Pages/DashBoard/Manageorder';
 import EditProfile from './Pages/DashBoard/EditProfile';
+import Addproduct from './Pages/DashBoard/Addproduct';
+import Foot from './Pages/Foot/Foot';
 
 function App() {
   return (
-    <div className="container">
+    <div className='container'>
       <Header></Header>
+     
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/Home' element={<Home></Home>}></Route>
@@ -46,7 +49,9 @@ function App() {
           <Route path='Manageorder'element={<Manageorder />}></Route>
           <Route path="Payment/:id" element={<Payment></Payment>}></Route>
           <Route path="ManageProducts" element={<ManageProducts></ManageProducts>}></Route>
-          <Route path="EditProfile" element={<EditProfile></EditProfile>}></Route>
+          
+          <Route path="EditProfile" element={<EditProfile />}></Route>
+          <Route path="Addproduct" element={<Addproduct></Addproduct>}></Route>
           
           <Route path="AllUsers" element={<RequireAdmin><AllUsers></AllUsers></RequireAdmin>}></Route>
           

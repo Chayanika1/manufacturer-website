@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ManageProduct = ({ service,refetch }) => {
+const ManageProduct = ({ service, refetch }) => {
     const { _id, name, price, quantity, description, rate, available, img } = service;
     const deleteOrder = (id) => {
         console.log(id)
@@ -11,11 +11,12 @@ const ManageProduct = ({ service,refetch }) => {
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
-               window.location.reload()
+                window.location.reload()
+
 
             });
     };
-     return (
+    return (
 
         <div class="card w-50 bg-base-100 shadow-xl">
             <figure><img src={img} alt="Shoes" /></figure>
@@ -28,10 +29,14 @@ const ManageProduct = ({ service,refetch }) => {
                 <p>{available}</p>
                 <p>Price : ${price}</p>
                 <div class="card-actions justify-end">
-                    <button onClick={() => deleteOrder(_id)}class="btn btn-error">Delete</button>
-                    <button  class="btn btn-success">Update</button>
+                    <button onClick={() => deleteOrder(_id)} class="btn btn-error">Delete</button>
+
                 </div>
             </div>
+
+
+
+
         </div>
 
 

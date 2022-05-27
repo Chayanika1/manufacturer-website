@@ -36,7 +36,7 @@
         "description":"Processor 10th Gen Intel® Core™ i3-10105 (6 MB cache, 4 cores, 8 threads, 3.70 GHz to 4.40 GHz Turbo)",
         "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAK8m08FwNC7QglZPOUAdu5LZ8-uwiY_2qmIRrON_A8qiqRDdcT4YesSph9s5fhI4Pwiw&usqp=CAU",
         "quantity":10,
-        "available":9,
+        "available":5,
         "rate":3.0
     },
     {
@@ -46,7 +46,7 @@
         "description":"Enjoy the power of silence with this Logitech M221 SILENT Mouse (Red). Its wireless connection helps you complete work relaxing on your couch. The mice requires no software and works effortlessly with most of the computers.",
         "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC2_sj3E5kT9T-dWWdTscVjPojAv174empFi3aEZi0IGcUvY050rGbttyk2vgZ7jqAR-U&usqp=CAU",
         "quantity":21,
-        "available":20,
+        "available":10,
         "rate":5.0
     },
     {

@@ -6,12 +6,13 @@ const Portfolio = () => {
     return (
         <div className='container' style={{ maxWidth:'1200px', textAlign:'center',justifyContent:'center',marginLeft:'15%'}}>
             <div class="card lg:card-side bg-base-100 shadow-xl">
-                <figure><img style={{ height: '600px' }} src={Mypic} alt="Album" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">CHAYANIKA CHAKRABORTY</h2>
-                    <p>FrontEnd Developer, Electronics Engineer</p>
-                    <p>Hello I am chayanika.I am from India.I am a quick Learner, self Motivated person.
-                        I love to learn new things. I love coding.
+                <figure><img style={{ height: '400px',width:'300px' }} src={Mypic} alt="Album" /></figure>
+                <div class="card-body mx-auto">
+                    <h2 class="card-title mx-auto">CHAYANIKA CHAKRABORTY</h2>
+                    <p>FrontEnd Developer, Electronics Engineer
+                    Hello I am chayanika.I am from India.I am a quick Learner, self Motivated person.
+                        I love to learn new things. I love coding.I love travelling. I also love painting and gardening.
+                        Actually this is my hobby. I am a pet lover.
                     </p>
                 </div>
             </div>

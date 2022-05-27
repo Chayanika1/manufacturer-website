@@ -1,33 +1,55 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import axios from "axios";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const EditProfile = () => {
-    const { id } = useParams();
-    console.log(id);
-    const { register, handleSubmit, reset } = useForm();
+  const { id } = useParams();
+  console.log(id);
+  const { register, handleSubmit, reset } = useForm();
 
-    const onSubmit = (data) => {
-        const users = { ...data, img: imgUrl };
-        fetch(`http://localhost:5000/profile/${id}`, {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(users),
-        })
-            .then((res) => res.json())
-            .then((data) => console.log(data));
-        toast.success("successfully done");
-        reset();
-    };
+  const onSubmit = (data) => {
+    const users = { ...data, img: imgUrl };
+    fetch(`http://localhost:5000/profile/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(users),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+    toast.success("successfully done");
+    reset();
+  };
 
-    const [imgUrl, setImgUrl] = useState("");
-    return (
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+  const [imgUrl, setImgUrl] = useState("");
+
+  //imgbb
+
+  const handelImagUpload = (e) => {
+    const image = e.target.files[0];
+
+    const fromData = new FormData();
+    fromData.set("image", image);
+    axios
+      .post(
+        "https://api.imgbb.com/1/upload?key=c41b5fa5bb7a5e365ff9532690613577",
+        fromData
+      )
+      .then((res) => {
+        setImgUrl(res.data.data.display_url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  console.log(imgUrl);
+  return (
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <input
           placeholder="linkdin account"
           className="input input-bordered mt-2 w-2/4"
@@ -50,12 +72,11 @@ const EditProfile = () => {
         <br />
         <input
           type="file"
-          placeholder="image"
+          placeholder="imgae"
           className="input input-bordered mt-2 w-2/4"
           {...register("img")}
-          
+          onChange={handelImagUpload}
         />
-
         <br />
         <input
           placeholder="phone number"
@@ -73,11 +94,8 @@ const EditProfile = () => {
         <br />
         <input className=" px-20 btn btn-primary mt-8" type="submit" />
       </form>
-            <ToastContainer />
-
-
-        </div>
-    );
+    </div>
+  );
 };
 
 export default EditProfile;
