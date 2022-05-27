@@ -20,10 +20,13 @@ const DashBoard = () => {
                 <label for="my-drawer-2" class="drawer-overlay"></label>
                 <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                     {/*<!-- Sidebar content here -->*/}
-                    <li><Link to="/DashBoard"> My Orders</Link></li>
+                    { !admin && <li><Link to="/DashBoard"> My Orders</Link></li>}
                     <li><Link to="/DashBoard/MyReview"> My Reviews</Link></li>
                     <li><Link to="/DashBoard/MyProfile"> My Profile</Link></li>
+                    <li><Link to="/DashBoard/EditProfile"> </Link></li>
+                    {admin &&<li><Link to="/DashBoard/ManageOrder">Manage All Order</Link></li>}
                     {admin && <li><Link to="/DashBoard/AllUsers"> All Users</Link></li>}
+                    {admin && <li><Link to="/DashBoard/ManageProducts"> Manage Products</Link></li>}
                     
                     
                 </ul>
