@@ -13,7 +13,7 @@ const Tool = ({ service }) => {
     return (
 
 
-        <div class="card card-compact w-96 bg-base-100 shadow-xl">
+        <div class="card card-compact  bg-base-100 shadow-xl" style={{width:'75%'}}>
             <figure><img src={img} alt="Shoes" /></figure>
             <div class="card-body">
                 <h2 class="card-title">{name}</h2>

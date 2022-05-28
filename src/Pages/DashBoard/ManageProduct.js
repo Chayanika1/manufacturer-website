@@ -26,7 +26,7 @@ const ManageProduct = ({ service, refetch }) => {
                     <div class="badge badge-secondary">NEW</div>
                 </h2>
                 <p>{description}</p>
-                <p>{available}</p>
+                <p> Available:{available}</p>
                 <p>Price : ${price}</p>
                 <div class="card-actions justify-end">
                     

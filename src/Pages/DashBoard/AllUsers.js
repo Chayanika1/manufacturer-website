@@ -17,7 +17,7 @@ const AllUsers = () => {
         <div>
             <h5>ALL USERS : {users?.length}</h5>
             <div class="overflow-x-auto">
-                <table class="table w-full">
+                <table class="table w-full table-compact">
                    
                     <thead>
                         <tr>
