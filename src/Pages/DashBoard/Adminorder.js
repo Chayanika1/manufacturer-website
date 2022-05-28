@@ -23,7 +23,7 @@ const Adminorder = ({ refetch, user, _id, order, quntity }) => {
       <td>{booking}</td>
       <td>
         <div>
-          <label for="my-modal-4" class="btn btn-xs btn-error">Delete</label>
+          
 
 
 

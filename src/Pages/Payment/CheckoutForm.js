@@ -82,7 +82,7 @@ const CheckoutForm = ({pay}) => {
 
            }
           fetch(`https://desolate-hamlet-69672.herokuapp.com/booking/${_id}`,{
-              method:'PATCH',
+              method:'PUT',
               headers:{
                  'content-type':"application/json"
 

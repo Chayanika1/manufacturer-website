@@ -36,11 +36,12 @@ const MyOrders = () => {
 
     }, [user])
     const deleteOrder = (id) => {
-        console.log(id);
+       
 
         fetch(`https://desolate-hamlet-69672.herokuapp.com/booking/:${id}`, {
             method: "DELETE",
         })
+         
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
@@ -75,18 +76,21 @@ const MyOrders = () => {
                                 <td>{user?.email}</td>
                                 <td>{user?.displayName}</td>
                                 <td>{order.booking}</td>
-                                <td>{order.id}</td>
+                                <td>{order._id}</td>
+                                
                                 <td>
                                     {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}
                                     {(order.price && order.paid) && <div>
                                         <p><span className='text-success'>Paid</span></p>
-                                        <p>transactionId: {order?.transactionId}</p>
+                                        
+                                        
 
                                     </div>}
+                                    <p>transactionId: {orders?.transactionId}</p>
                                 </td>
 
 
-                                <td><button onClick={()=>deleteOrder(order?._id)} class="btn btn-xs btn-error">Cancel</button></td>
+                                <td><button onClick={()=>deleteOrder(order.id)} class="btn btn-xs btn-error">Cancel</button></td>
                             </tr>)
                         }
 

@@ -14,7 +14,7 @@ const Tool = ({ service }) => {
 
 
         <div class="card card-compact  bg-base-100 shadow-xl" style={{width:'75%'}}>
-            <figure><img src={img} alt="Shoes" /></figure>
+            <figure><img src={img} style={{height:'200px'}} alt="Shoes" /></figure>
             <div class="card-body">
                 <h2 class="card-title">{name}</h2>
                 <p>{description}</p>
