@@ -29,7 +29,7 @@ import Foot from './Pages/Foot/Foot';
 
 function App() {
   return (
-    <div className='container'>
+    <div className='App pt-4'>
       <Header></Header>
      
       <Routes>
