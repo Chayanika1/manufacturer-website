@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ManageProduct = ({ service, refetch }) => {
-    const { _id, name, price, quantity, description, rate, available, img } = service;
+    const { _id, name, price, quantity, description, rate, available, img,setDeleting } = service;
     const deleteOrder = (id) => {
         console.log(id)
 
@@ -29,6 +29,7 @@ const ManageProduct = ({ service, refetch }) => {
                 <p>{available}</p>
                 <p>Price : ${price}</p>
                 <div class="card-actions justify-end">
+                    
                     <button onClick={() => deleteOrder(_id)} class="btn btn-error">Delete</button>
 
                 </div>

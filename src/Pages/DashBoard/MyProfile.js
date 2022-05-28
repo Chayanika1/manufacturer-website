@@ -25,7 +25,7 @@ const MyProfile = () => {
     console.log(datas);
 
     const navigateEdit = () => {
-        navigate('/EditProfile')
+        navigate(`/profile/${datas[0]?._id}`)
         
     }
        

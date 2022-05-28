@@ -50,13 +50,14 @@ function App() {
           <Route path="Payment/:id" element={<Payment></Payment>}></Route>
           <Route path="ManageProducts" element={<ManageProducts></ManageProducts>}></Route>
           
-          <Route path="EditProfile" element={<EditProfile />}></Route>
+          
           <Route path="Addproduct" element={<Addproduct></Addproduct>}></Route>
           
           <Route path="AllUsers" element={<RequireAdmin><AllUsers></AllUsers></RequireAdmin>}></Route>
           
 
         </Route>
+        <Route path="Profile/:id" element={<EditProfile />}></Route>
         
         <Route path='*' element={<Error></Error>}></Route>
       </Routes>

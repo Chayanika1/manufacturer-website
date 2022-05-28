@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react';
 import ManageProduct from './ManageProduct';
 import { useQuery } from 'react-query';
 import Spinner from '../Spinner/Spinner';
+import DeleteModal from '../DashBoard/DeleteModal'
 
 const ManageProducts = () => {
     const [services, setServices] = useState([]);
+    const[deleting,setDeleting] = useState(null)
     
     useEffect(() => {
         fetch('http://localhost:5000/data')
@@ -20,11 +22,12 @@ const ManageProducts = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 '>
                 {
-                    services.map(service =><ManageProduct service={service} ></ManageProduct>)
+                    services.map(service =><ManageProduct service={service} setDeleting={setDeleting}></ManageProduct>)
 
                 }
 
             </div>
+            {deleting && <DeleteModal></DeleteModal>}
 
 
 

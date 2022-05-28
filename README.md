@@ -1,8 +1,18 @@
-# Getting Started with Create React App
+# welcome to tools portal
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+in this projects i have using so may things and learn soo many things.. they are:
+<ul>
+<li>I am using axios</li>
+<li>I am using stripe</li>
+<li>I am using React query</li>
+<li>I have use react form</li>
+<li>I designed this ui by using tail wind and daisy ui</li>
+<li>Using modal 1st time</li>
+<li>Try to create admin </li>
+</ul>
 
 In the project directory, you can run:
 

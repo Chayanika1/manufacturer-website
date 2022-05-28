@@ -4,8 +4,11 @@ import { useQuery } from "react-query";
 import auth from '../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Adminorder from '../DashBoard/Adminorder';
+import DeleteModal from "./DeleteModal";
 
 const Manageorder = () => {
+  const[deleting,setDeleting] = useState(null)
+
  const{data:orders,isLoading,refetch}= useQuery('orders',()=>fetch('http://localhost:5000/order').then(res=>res.json()));
 
   if(isLoading){
@@ -37,6 +40,7 @@ const Manageorder = () => {
                        {
                            orders?.map(user=><Adminorder
                            key={user._id}
+                           setDeleting={setDeleting}
                            user={user} refetch={refetch}
                            
                            ></Adminorder>)
@@ -44,6 +48,7 @@ const Manageorder = () => {
                     </tbody>
                 </table>
             </div>
+            {deleting && <DeleteModal></DeleteModal>}
     </div>
   );
 };

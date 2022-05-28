@@ -108,7 +108,7 @@ const Purchase = () => {
                     <div class="modal-box">
                         <label for="my-modal-6" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                         <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-1 gap-3 justify-items-center mt-3'>
-                            <input type="name"{...register("name")} name="name" disabled value={user?.displayName || ''} class="input input-bordered input-success w-full max-w-xs" />
+                            <input type="name"{...register("name")} name="name" disabled value={user ?.displayName || ''} class="input input-bordered input-success w-full max-w-xs" />
 
                             <input type="email"{...register("email")} name="email" disabled value={user?.email} class="input input-bordered input-success w-full max-w-xs" />
                             <input type="text"{...register("address")} name="address" placeholder="Your Address" class="input input-bordered input-success w-full max-w-xs" />
