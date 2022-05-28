@@ -13,7 +13,7 @@ const Addproduct = () => {
       ...data,
       img: imgUrl,
     };
-    fetch("http://localhost:5000/data", {
+    fetch("https://desolate-hamlet-69672.herokuapp.com/data", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

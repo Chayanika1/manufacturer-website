@@ -5,7 +5,7 @@ const ManageProduct = ({ service, refetch }) => {
     const deleteOrder = (id) => {
         console.log(id)
 
-        fetch(`http://localhost:5000/data/${id}`, {
+        fetch(`https://desolate-hamlet-69672.herokuapp.com/data/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())

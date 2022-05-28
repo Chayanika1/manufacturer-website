@@ -13,7 +13,7 @@ const MyProfile = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/profile/${user?.email}`)
+        fetch(`https://desolate-hamlet-69672.herokuapp.com/profile/${user?.email}`)
             .then((res) => res.json())
             .then((data) => setDatas(data));
     }, [user]);

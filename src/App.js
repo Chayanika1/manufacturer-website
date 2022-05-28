@@ -46,12 +46,12 @@ function App() {
           <Route index element={<MyOrders />} />
           <Route path='MyReview'element={<MyReview />}></Route>
           <Route path='MyProfile'element={<MyProfile />}></Route>
-          <Route path='Manageorder'element={<Manageorder />}></Route>
+          <Route path='Manageorder'element={<RequireAdmin><Manageorder /></RequireAdmin>}></Route>
           <Route path="Payment/:id" element={<Payment></Payment>}></Route>
-          <Route path="ManageProducts" element={<ManageProducts></ManageProducts>}></Route>
+          <Route path="ManageProducts" element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route>
           
           
-          <Route path="Addproduct" element={<Addproduct></Addproduct>}></Route>
+          <Route path="Addproduct" element={<RequireAdmin><Addproduct></Addproduct></RequireAdmin>}></Route>
           
           <Route path="AllUsers" element={<RequireAdmin><AllUsers></AllUsers></RequireAdmin>}></Route>
           

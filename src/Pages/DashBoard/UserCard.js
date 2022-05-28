@@ -7,7 +7,7 @@ const UserCard = ({ user, refetch }) => {
   const { email, role } = user;
   //console.log(user)
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://desolate-hamlet-69672.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

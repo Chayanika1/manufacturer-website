@@ -4,7 +4,7 @@ import AllReview from '../AllReview/AllReview';
 const My = () => {
     const[reviews,setReviews] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/review')
+        fetch('https://desolate-hamlet-69672.herokuapp.com/review')
         .then(response=>response.json())
         .then(data=>setReviews(data))
     },[])

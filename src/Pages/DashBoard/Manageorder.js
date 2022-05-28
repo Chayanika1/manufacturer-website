@@ -9,7 +9,7 @@ import DeleteModal from "./DeleteModal";
 const Manageorder = () => {
   const[deleting,setDeleting] = useState(null)
 
- const{data:orders,isLoading,refetch}= useQuery('orders',()=>fetch('http://localhost:5000/order').then(res=>res.json()));
+ const{data:orders,isLoading,refetch}= useQuery('orders',()=>fetch('https://desolate-hamlet-69672.herokuapp.com/order').then(res=>res.json()));
 
   if(isLoading){
       return <Spinner></Spinner>

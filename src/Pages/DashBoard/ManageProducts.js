@@ -10,7 +10,7 @@ const ManageProducts = () => {
     const[deleting,setDeleting] = useState(null)
     
     useEffect(() => {
-        fetch('http://localhost:5000/data')
+        fetch('https://desolate-hamlet-69672.herokuapp.com/data')
             .then(response => response.json())
             .then(data => setServices(data))
     }, [])

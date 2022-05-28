@@ -21,7 +21,7 @@ const DashBoard = () => {
                 <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                     {/*<!-- Sidebar content here -->*/}
                     { !admin && <li><Link to="/DashBoard"> My Orders</Link></li>}
-                    <li><Link to="/DashBoard/MyReview"> My Reviews</Link></li>
+                    { !admin &&<li><Link to="/DashBoard/MyReview"> My Reviews</Link></li>}
                     <li><Link to="/DashBoard/MyProfile"> My Profile</Link></li>
                    
                    

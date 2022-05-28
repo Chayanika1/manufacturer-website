@@ -10,7 +10,7 @@ import CheckoutForm from './CheckoutForm';
  const stripePromise = loadStripe('pk_test_51L3EHmAGH8fraxDUAPptVJw3F9tXxwsMfNndtRsn6vrVsIKspMbB3ck4v9MLe4lXiL8dBXJPEpJo8mxQFfD8IJpr00nHWGGKu3')
  const Payment = () => {
     const { id } = useParams();
-    const url = `http://localhost:5000/booking/${id}`;
+    const url = `https://desolate-hamlet-69672.herokuapp.com/booking/${id}`;
     const [pay, setPay] = useState({});
     useEffect(() => {
         fetch(url)

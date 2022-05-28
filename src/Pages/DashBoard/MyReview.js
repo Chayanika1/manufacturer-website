@@ -32,7 +32,7 @@ const MyReview = () => {
                         rating: data.rating
 
                     }
-                    fetch('http://localhost:5000/review', {
+                    fetch('https://desolate-hamlet-69672.herokuapp.com/review', {
                         method: 'POST',
                         headers: {
                             "Content-Type": "application/json",

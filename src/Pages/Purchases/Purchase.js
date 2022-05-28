@@ -31,7 +31,7 @@ const Purchase = () => {
     const [user] = useAuthState(auth);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/data/${id}`)
+        fetch(`https://desolate-hamlet-69672.herokuapp.com/data/${id}`)
             .then(response => response.json())
             .then(data => setItems(data))
     }, []);
@@ -56,7 +56,7 @@ const Purchase = () => {
 
 
         }
-        fetch('http://localhost:5000/booking', {
+        fetch('https://desolate-hamlet-69672.herokuapp.com/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

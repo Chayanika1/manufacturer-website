@@ -11,7 +11,7 @@ const CheckoutForm = ({pay}) => {
     const[processing,setProcessing] =useState(false);
     const{ _id,price,name,buyer} = pay;
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://desolate-hamlet-69672.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -81,7 +81,7 @@ const CheckoutForm = ({pay}) => {
                transactionId:paymentIntent.id
 
            }
-          fetch(`http://localhost:5000/booking/${_id}`,{
+          fetch(`https://desolate-hamlet-69672.herokuapp.com/booking/${_id}`,{
               method:'PATCH',
               headers:{
                  'content-type':"application/json"

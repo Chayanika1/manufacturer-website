@@ -5,7 +5,7 @@ const Adminorder = ({ refetch, user, _id, order, quntity }) => {
   const { buyer, booking, paid, } = user
   const deleteOrder = (id) => {
 
-    fetch(`http://localhost:5000/order/${id}`, {
+    fetch(`https://desolate-hamlet-69672.herokuapp.com/order/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

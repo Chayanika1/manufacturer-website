@@ -10,7 +10,7 @@ const MyOrders = () => {
     const [user] = useAuthState(auth)
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/booking?buyer=${user.email}`, {
+            fetch(`https://desolate-hamlet-69672.herokuapp.com/booking?buyer=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -38,7 +38,7 @@ const MyOrders = () => {
     const deleteOrder = (id) => {
         console.log(id);
 
-        fetch(`http://localhost:5000/booking/:${id}`, {
+        fetch(`https://desolate-hamlet-69672.herokuapp.com/booking/:${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())

@@ -4,7 +4,7 @@ import Tool from './Tool';
 const Tools = () => {
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/data')
+        fetch('https://desolate-hamlet-69672.herokuapp.com/data')
             .then(response => response.json())
             .then(data => setServices(data))
     }, [])
