@@ -81,12 +81,12 @@ const CheckoutForm = ({pay}) => {
                transactionId:paymentIntent.id
 
            }
-          fetch(`https://desolate-hamlet-69672.herokuapp.com/booking/${_id}`,{
-              method:'PUT',
-              headers:{
-                 'content-type':"application/json"
+           fetch(`https://desolate-hamlet-69672.herokuapp.com/booking/${_id}`,{
+            method:'PUT',
+            headers:{
+               'content-type':"application/json"
 
-              },
+            },
               body:JSON.stringify({payment})
           }).then(res=>res.json()).then(data=>{
               setProcessing(false)
