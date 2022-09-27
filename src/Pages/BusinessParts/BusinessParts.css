@@ -1,0 +1,12 @@
+#cont{
+    background-color: rgb(220, 230, 230);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+#head{
+    padding: 15px;
+}
+#gap{
+    text-align: center;
+}

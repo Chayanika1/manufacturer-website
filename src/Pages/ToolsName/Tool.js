@@ -23,7 +23,7 @@ const Tool = ({ service }) => {
                 <h6>Max purchase :{available}</h6>
                 <h4>Ratings :{rate}</h4>
                 
-                <div class="card-actions justify-end">
+                <div class="card-actions justify-center">
                     <button onClick={() => handleBuy(_id)} class="btn btn-primary">Buy Now</button>
                 </div>
             </div>
